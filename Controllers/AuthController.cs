@@ -43,7 +43,8 @@ namespace EmployeeCRUD.API.Controllers
         {
             var userFromRepo = await _authRepository.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
-            if (userForLoginDto == null)
+            Console.WriteLine(userFromRepo);
+            if (userFromRepo == null)
                 return Unauthorized();
 
             var claims = new[] {
