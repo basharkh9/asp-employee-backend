@@ -20,6 +20,12 @@ namespace EmployeeCRUD.API.Controllers
             _repo = repo;
         }
 
+        /// <summary>
+        /// get list of Employee
+        /// </summary>
+        /// <response code="200">retrieved all users succecfully</response>
+        /// <response code="401">if no token provided in header or the token not valid</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
