@@ -20,6 +20,24 @@ namespace EmployeeCRUD.API.Controllers
             _config = config;
             _authRepository = authRepository;
         }
+
+        /// <summary>
+        /// Register user endpoint
+        /// </summary>
+        /// <remarks>
+        /// Sample Request:
+        /// 
+        ///     Post
+        ///     {
+        ///         "username":"bashar",
+        ///         "password":"somePass"
+        ///     }
+        /// </remarks>
+        /// <param name="userForRegisterDto"></param>
+        /// <response code="201">User Created Successfully</response>
+        /// <response code="400">User Already Exists</response>
+        /// <response code="401">Model State Error check the request body you send</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
@@ -37,6 +55,22 @@ namespace EmployeeCRUD.API.Controllers
             // Return CreatedAtRoute
             return StatusCode(201);
         }
+
+        /// <summary>
+        /// Login user endpoint
+        /// </summary>
+        /// <remarks>
+        /// Sample Request:
+        /// 
+        ///     Post
+        ///     {
+        ///         "username":"bashar",
+        ///         "password":"somePass"
+        ///     }
+        /// </remarks>
+        /// <response code="200">login successful and the body of the response has the token</response>
+        /// <response code="401">Model State Error check the request body you send</response>
+        /// <response code="500">Internal Server Error</response>
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
